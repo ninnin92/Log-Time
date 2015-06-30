@@ -14,7 +14,7 @@ https://play.google.com/store/apps/details?id=org.kivy.pygame&hl=ja
 * ファイルエクスプローラー（or PCにつなげてPC上で作業）
 
 ####手順
-1. log-timeフォルダをzipで落として解凍 → 手持ちのAndroidに
+1. log-timeフォルダをzipで落として解凍
 
 2. 手持ちのAndroidにKivy Launcherをインストール
 

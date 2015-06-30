@@ -9,12 +9,12 @@
 ### アプリ起動
 ####必要なもの
 * Android（バージョンは確認してないので不明）
-* Kivy Launcher（kivyアプリ起動のためのアプリケーション）  
+* Kivy Launcher（kivyアプリ起動のためのアプリケーション）
 https://play.google.com/store/apps/details?id=org.kivy.pygame&hl=ja
 * ファイルエクスプローラー（or PCにつなげてPC上で作業）
 
 ####手順
-1. log-timeフォルダをzipで落として解凍 → 手持ちのAndroidに
+1. log-timeフォルダをzipで落として解凍
 
 2. 手持ちのAndroidにKivy Launcherをインストール
 
@@ -24,7 +24,7 @@ https://play.google.com/store/apps/details?id=org.kivy.pygame&hl=ja
 
    * Nexus7の場合： mnt/sdcardに“kivy”というフォルダを作成？
 
-   * スマートフォンの場合： mnt/sdcardに“kivy”というフォルダを作成  
+   * スマートフォンの場合： mnt/sdcardに“kivy”というフォルダを作成
 
 5. 作成したKivyフォルダにlog-timeフォルダを入れる
 
@@ -44,7 +44,7 @@ https://play.google.com/store/apps/details?id=org.kivy.pygame&hl=ja
 ##### イベント名の変更
 1. テキストエディタでlog-time内のmain.pyを開く
 2. 該当部分を変更（以下）
-```python:main.py
+```python
 class MyApp(App):
     title = 'Log_Time'  # ウィンドウのタイトル
 ##################################################

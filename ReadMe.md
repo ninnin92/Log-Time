@@ -18,7 +18,7 @@ https://play.google.com/store/apps/details?id=org.kivy.pygame&hl=ja
 
 2. 手持ちのAndroidにKivy Launcherをインストール
 
-3. 手持ちのAndroidをPCのにつなげる（もしくはファイルエクスプローラーを起動）
+3. 手持ちのAndroidをPCにつなげる（もしくはファイルエクスプローラーを起動）
 
 4. kivyフォルダの作成（詳細な場所は,Kivy Launcherを起動すると書いてある）
 

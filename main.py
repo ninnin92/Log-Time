@@ -9,8 +9,8 @@ from kivy.uix.widget import Widget
 import datetime as dt
 
 # PC用の設定
-Config.set('graphics', 'width', '800')  # 画面:横の大きさ
-Config.set('graphics', 'height', '1000')  # 画面:縦の大きさ
+#Config.set('graphics', 'width', '800')  # 画面:横の大きさ
+#Config.set('graphics', 'height', '1000')  # 画面:縦の大きさ
 Config.set('graphics', 'show_cursor', '1')  # マウスカーソルの有無
 
 
@@ -90,7 +90,7 @@ class MyApp(App):
         elif bt == 3:
             self.root.hit3.color = [0.1098, 0.5137, 0.7333, 1]  # 青
         elif bt == 4:
-            self.root.sys1.color = [237/255, 173/255, 11/255, 1]  # オレンジ（実行中）
+            self.root.sys1.color = [0.9294, 0.6784, 0.0431, 1]  # オレンジ（実行中）
         else:
             self.root.sys1.color = [1, 1, 1, 1]  # 白
             self.root.sys2.color = [1, 1, 1, 1]  # 白

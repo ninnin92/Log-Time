@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding:utf-8
-# env python 2.7.6
+# env python 3.4.5
 
-from __future__ import division  # 少数点以下表示のためのモジュール
+# from __future__ import division  # 少数点以下表示のためのモジュール
 from kivy.config import Config
 from kivy.app import App
 from kivy.uix.widget import Widget
@@ -26,15 +26,55 @@ class MyApp(App):
 #################################################
 # ボタン名（イベント名）：ここの名前を変えることでevent名が変化
 #################################################
-    bt1 = "event1"  # 左から１番目
+    bt1 = "event1"  # 左から1番目
     bt2 = "event2"  # 左から2番目
     bt3 = "event3"  # 左から3番目
 #################################################
 
-    data = []  # データ置き場
-    # アプリの起動した時間
-    app_time = "{0:%y-%m-%d_%H-%M}".format(dt.datetime.now())  # formatを使うと一行で済んで便利
-    fp = open("Log/" + "Log_" + app_time + ".csv", "w")  # csvファイルを起動時刻で作成
+    data = []       # データ置き場
+    file_check = 0  # 現在開いているファイルがあるかどうかをスイッチする変数
+
+    def open_log(self):
+        # ボタンを押した時間
+        self.app_time = "{0:%y-%m-%d_%H-%M-%S}".format(dt.datetime.now())  # formatを使うと一行で済んで便利
+        self.fp = open("Log/" + "Log_" + self.app_time + ".csv", "w")  # csvファイルを起動時刻で作成
+
+        # ラベルの書き込み
+        index = ["Event", "Time"]
+        for i in index:
+            self.fp.write("%s," % i)
+        self.fp.write("\n")
+        self.file_check = 1  # ファイルが開いた状態
+        print("Open!")
+
+        # メッセージの書き出し
+        self.root.timel3.text = self.root.timel2.text
+        self.root.timel2.text = self.root.timel1.text
+        self.root.timel1.text = "Start Log : " + self.app_time + ".csv"
+
+    def save_log(self):
+        if self.file_check:
+            # リストにあるデータを書き込み
+            # print (self.data)
+            for x in self.data:
+                self.fp.write("%s, %s\n" % tuple(x))
+            self.fp.flush()
+            self.file_check = 0  # ファイルが閉じた状態
+            print("Save!")
+
+            self.data = []  # データのリセット
+
+            # メッセージの書き出し
+            self.root.timel3.text = self.root.timel2.text
+            self.root.timel2.text = self.root.timel1.text
+            self.root.timel1.text = "Save Log : " + self.app_time + ".csv"
+        else:
+            # セーブすべきファイルがないとき　
+            # メッセージの書き出し
+            self.root.timel3.text = self.root.timel2.text
+            self.root.timel2.text = self.root.timel1.text
+            self.root.timel1.text = "!! No save file !!"
+
 
     # ボタンを離した時の処理：文字色を元に戻す
     def bt_release(self, bt):
@@ -64,7 +104,8 @@ class MyApp(App):
         self.root.timel2.text = self.root.timel1.text
         self.root.timel1.text = "*  " + bt + " | " + now
 
-        print (self.root.timel1.text)  # PCでのデバック用
+        print(self.root.timel1.text)  # PCでのデバック用
+
 
     # Kivyアプリの構築（必須）
     def build(self):
@@ -72,19 +113,22 @@ class MyApp(App):
 
     # 起動時に読み込まれる関数
     def on_start(self):
-        index = ["Event", "Time"]
-        for i in index:
-            self.fp.write("%s," % i)
-        self.fp.write("\n")
-        print ("Start!")
+        pass
 
     # 終了時に読み込まれる関数
     def on_stop(self):
-        print (self.data)
-        for x in self.data:
-            self.fp.write("%s, %s\n" % tuple(x))
-        self.fp.flush()
-        print ("Stop!")
+        # 終了時にセーブされていない場合、セーブする
+        if self.file_check:
+            # print (self.data)
+            for x in self.data:
+                self.fp.write("%s, %s\n" % tuple(x))
+            self.fp.flush()
+            print("Save!")
+            self.file_check = 0
+
+            self.data = []  # データのリセット
+        else:
+            pass
 
     # スマートフォンのポーズ機能をON（アプリを起動したまま画面を変えたりとか）
     def on_pause(self):

@@ -1,6 +1,8 @@
 #: import Button kivy.uix.button.Button
 
 <logtime>:
+    sys1: open_button
+    sys2: save_button
     hit1: hit_button1
     hit2: hit_button2
     hit3: hit_button3
@@ -14,6 +16,34 @@
         Rectangle:
             pos: self.pos
             size: self.size
+
+    Button:
+        id: open_button
+        text: "open"
+        font_size: 36
+        color: [0.2117, 0.23529, 0.36470, 1]
+        background_normal: "Resource/button_down2.png"
+        background_down: "Resource/button_normal.png"
+        border: 0, 0, 0, 0
+        size: root.width/6, root.width/12
+        center_x: (root.width/2)
+        center_y: (root.height/2)
+        on_press: app.open_log()
+        on_release: app.bt_release(4)
+
+    Button:
+        id: save_button
+        text: "save"
+        font_size: 36
+        color: [0.2117, 0.23529, 0.36470, 1]
+        background_normal: "Resource/button_down2.png"
+        background_down: "Resource/button_normal.png"
+        border: 0, 0, 0, 0
+        size: root.width/6, root.width/12
+        center_x: ((root.width/6)*4 + 50)
+        center_y: (root.height/2)
+        on_press: app.save_log()
+        on_release: app.bt_release(5)
 
     Button:
         id: hit_button1
@@ -58,7 +88,7 @@
         on_release: app.bt_release(3)
 
     Label:
-        text: "# Last_Log"
+        text: "# Log_Time"
         color: [0.2, 0.70588, 0.56470, 1]
         font_size: 36
         bold: True

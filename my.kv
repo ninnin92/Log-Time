@@ -1,7 +1,7 @@
 #: import Button kivy.uix.button.Button
 
 <logtime>:
-    sys1: open_button
+    sys1: run_button
     sys2: save_button
     hit1: hit_button1
     hit2: hit_button2
@@ -12,36 +12,55 @@
 
     canvas.before:
         Color:
-            rgba: [0.8, 0.8, 0.8, 1]
+            rgba: [0.9333, 0.9372, 0.9372, 1]
         Rectangle:
             pos: self.pos
             size: self.size
 
+    canvas:
+        Color:
+            rgba:  [0.1098, 0.5137, 0.7333, 1]
+        Rectangle:
+            size: root.width, ((root.height/40)*3)
+            pos: 0, root.height - (root.height/40)*3
+
+        Color:
+            rgba:  [1, 1, 1, 1]
+        Rectangle:
+            size: ((root.width/8)*7), ((root.height/10)*4)
+            pos: root.width/16, (root.height/25)*3
+
+        Color:
+            rgba:  [0.2, 0.2, 0.2, 1]
+        Line:
+            points: (root.width/16, (root.height/25)*13, root.width/16, (root.height/25)*3, (root.width/16)*15, (root.height/25)*3, (root.width/16)*15, (root.height/25)*13)
+            joint: "round"
+            close: True
+            width: 0.5
+
     Button:
-        id: open_button
-        text: "open"
+        id: run_button
+        text: "run"
         font_size: 36
-        color: [0.2117, 0.23529, 0.36470, 1]
-        background_normal: "Resource/button_down2.png"
-        background_down: "Resource/button_normal.png"
+        color: [1, 1, 1, 1]
+        background_normal: "Resource/button2_normal_L.png"
+        background_down: "Resource/button2_down_L.png"
         border: 0, 0, 0, 0
-        size: root.width/6, root.width/12
-        center_x: (root.width/2)
-        center_y: (root.height/2)
-        on_press: app.open_log()
+        size: root.width/2, root.height/14
+        pos: 0, 0
+        on_press: app.run_log()
         on_release: app.bt_release(4)
 
     Button:
         id: save_button
         text: "save"
         font_size: 36
-        color: [0.2117, 0.23529, 0.36470, 1]
-        background_normal: "Resource/button_down2.png"
-        background_down: "Resource/button_normal.png"
+        color: [1, 1, 1, 1]
+        background_normal: "Resource/button2_normal_R.png"
+        background_down: "Resource/button2_down_R.png"
         border: 0, 0, 0, 0
-        size: root.width/6, root.width/12
-        center_x: ((root.width/6)*4 + 50)
-        center_y: (root.height/2)
+        size: root.width/2, root.height/14
+        pos: root.width/2, 0
         on_press: app.save_log()
         on_release: app.bt_release(5)
 
@@ -49,13 +68,13 @@
         id: hit_button1
         text: app.bt1
         font_size: 36
-        color: [0.2, 0.70588, 0.56470, 1]
+        color: [0.1098, 0.5137, 0.7333, 1]
         background_normal: "Resource/button_normal.png"
         background_down: "Resource/button_down.png"
         border: 0, 0, 0, 0
-        size: root.width/4, root.width/4
-        center_x: (root.width/6)
-        center_y: ((root.height/4)*3)
+        size: (root.width/8)*7, (root.height/200)*17
+        center_x: (root.width/2)
+        center_y: ((root.height/25)*21)
         on_press: app.time_get(1)
         on_release: app.bt_release(1)
 
@@ -63,13 +82,13 @@
         id: hit_button2
         text: app.bt2
         font_size: 36
-        color: [0.2, 0.70588, 0.56470, 1]
+        color: [0.1098, 0.5137, 0.7333, 1]
         background_normal: "Resource/button_normal.png"
         background_down: "Resource/button_down.png"
         border: 0, 0, 0, 0
-        size: root.width/4, root.width/4
+        size: (root.width/8)*7, (root.height/200)*17
         center_x: (root.width/2)
-        center_y: ((root.height/4)*3)
+        center_y: ((root.height/25)*18)
         on_press: app.time_get(2)
         on_release: app.bt_release(2)
 
@@ -77,49 +96,54 @@
         id: hit_button3
         text: app.bt3
         font_size: 36
-        color: [0.2, 0.70588, 0.56470, 1]
+        color: [0.1098, 0.5137, 0.7333, 1]
         background_normal: "Resource/button_normal.png"
         background_down: "Resource/button_down.png"
         border: 0, 0, 0, 0
-        size: root.width/4, root.width/4
-        center_x: ((root.width/6)*5)
-        center_y: ((root.height/4)*3)
+        size: (root.width/8)*7, (root.height/200)*17
+        center_x: (root.width/2)
+        center_y: ((root.height/25)*15)
         on_press: app.time_get(3)
         on_release: app.bt_release(3)
 
     Label:
-        text: "# Log_Time"
-        color: [0.2, 0.70588, 0.56470, 1]
+        text: "Log-Time"
+        color: [1, 1, 1, 1]
         font_size: 36
         bold: True
-        size: root.width/2, root.height/2
-        center_x: (root.width/6 + 10)
-        center_y: (root.height/2)
+        size: root.width, ((root.height/40)*3)
+        pos: 0, root.height - (root.height/40)*3
 
     Label:
         id: time_label1
-        text: "*  Last_Log"
+        text: "Log1"
         color: [0.2117, 0.23529, 0.36470, 1]
-        font_size: 36
-        size: root.width/2, root.height/2
-        center_x: (root.width/2)
-        center_y: ((root.height/8) * 3)
+        font_size: 30
+        text_size: self.size
+        halign: 'left'
+        size: ((root.width/8)*6), ((root.height/40)*3)
+        center_x: root.width/2
+        center_y: (root.height/25)*11
 
     Label:
         id: time_label2
-        text: "*  Last_Log"
+        text: "Log2"
         color: [0.2117, 0.23529, 0.36470, 1]
-        font_size: 36
-        size: root.width/2, root.height/2
-        center_x: (root.width/2)
-        center_y: (root.height/4)
+        font_size: 30
+        text_size: self.size
+        halign: 'left'
+        size: ((root.width/8)*6), ((root.height/40)*3)
+        center_x: root.width/2
+        center_y: (root.height/25)*8
 
     Label:
         id: time_label3
-        text: "*  Last_Log"
+        text: "Log3"
         color: [0.2117, 0.23529, 0.36470, 1]
-        font_size: 36
-        size: root.width/2, root.height/2
-        center_x: (root.width/2)
-        center_y: (root.height/8)
+        font_size: 30
+        text_size: self.size
+        halign: 'left'
+        size: ((root.width/8)*6), ((root.height/40)*3)
+        center_x: root.width/2
+        center_y: (root.height/25)*5
 

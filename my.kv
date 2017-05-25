@@ -6,6 +6,9 @@
     hit1: hit_button1
     hit2: hit_button2
     hit3: hit_button3
+    hit4: hit_button4
+    hit5: hit_button5
+    hit6: hit_button6
     timel1: time_label1
     timel2: time_label2
     timel3: time_label3
@@ -49,7 +52,7 @@
         size: root.width/2, root.height/14
         pos: 0, 0
         on_press: app.run_log()
-        on_release: app.bt_release(4)
+        on_release: app.bt_release(0)
 
     Button:
         id: save_button
@@ -62,7 +65,7 @@
         size: root.width/2, root.height/14
         pos: root.width/2, 0
         on_press: app.save_log()
-        on_release: app.bt_release(5)
+        on_release: app.bt_release(999)
 
     Button:
         id: hit_button1
@@ -72,8 +75,8 @@
         background_normal: "Resource/button_normal.png"
         background_down: "Resource/button_down.png"
         border: 0, 0, 0, 0
-        size: (root.width/8)*7, (root.height/200)*17
-        center_x: (root.width/2)
+        size: (root.width/16)*6, (root.height/200)*17
+        center_x: (root.width/4)
         center_y: ((root.height/25)*21)
         on_press: app.time_get(1)
         on_release: app.bt_release(1)
@@ -86,8 +89,8 @@
         background_normal: "Resource/button_normal.png"
         background_down: "Resource/button_down.png"
         border: 0, 0, 0, 0
-        size: (root.width/8)*7, (root.height/200)*17
-        center_x: (root.width/2)
+        size: (root.width/16)*6, (root.height/200)*17
+        center_x: (root.width/4)
         center_y: ((root.height/25)*18)
         on_press: app.time_get(2)
         on_release: app.bt_release(2)
@@ -100,11 +103,53 @@
         background_normal: "Resource/button_normal.png"
         background_down: "Resource/button_down.png"
         border: 0, 0, 0, 0
-        size: (root.width/8)*7, (root.height/200)*17
-        center_x: (root.width/2)
+        size: (root.width/16)*6, (root.height/200)*17
+        center_x: (root.width/4)
         center_y: ((root.height/25)*15)
         on_press: app.time_get(3)
         on_release: app.bt_release(3)
+
+    Button:
+        id: hit_button4
+        text: app.bt4
+        font_size: 36
+        color: [0.1098, 0.5137, 0.7333, 1]
+        background_normal: "Resource/button_normal.png"
+        background_down: "Resource/button_down.png"
+        border: 0, 0, 0, 0
+        size: (root.width/16)*6, (root.height/200)*17
+        center_x: ((root.width/4)*3)
+        center_y: ((root.height/25)*21)
+        on_press: app.time_get(4)
+        on_release: app.bt_release(4)
+
+    Button:
+        id: hit_button5
+        text: app.bt5
+        font_size: 36
+        color: [0.1098, 0.5137, 0.7333, 1]
+        background_normal: "Resource/button_normal.png"
+        background_down: "Resource/button_down.png"
+        border: 0, 0, 0, 0
+        size: (root.width/16)*6, (root.height/200)*17
+        center_x: ((root.width/4)*3)
+        center_y: ((root.height/25)*18)
+        on_press: app.time_get(5)
+        on_release: app.bt_release(5)
+
+    Button:
+        id: hit_button6
+        text: app.bt6
+        font_size: 36
+        color: [0.1098, 0.5137, 0.7333, 1]
+        background_normal: "Resource/button_normal.png"
+        background_down: "Resource/button_down.png"
+        border: 0, 0, 0, 0
+        size: (root.width/16)*6, (root.height/200)*17
+        center_x: ((root.width/4)*3)
+        center_y: ((root.height/25)*15)
+        on_press: app.time_get(6)
+        on_release: app.bt_release(6)
 
     Label:
         text: "Log-Time"

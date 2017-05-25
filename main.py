@@ -9,8 +9,8 @@ from kivy.uix.widget import Widget
 import datetime as dt
 
 # PC用の設定
-#Config.set('graphics', 'width', '800')  # 画面:横の大きさ
-#Config.set('graphics', 'height', '1000')  # 画面:縦の大きさ
+# Config.set('graphics', 'width', '800')  # 画面:横の大きさ
+# Config.set('graphics', 'height', '1000')  # 画面:縦の大きさ
 Config.set('graphics', 'show_cursor', '1')  # マウスカーソルの有無
 
 
@@ -26,9 +26,12 @@ class MyApp(App):
 #################################################
 # ボタン名（イベント名）：ここの名前を変えることでevent名が変化
 #################################################
-    bt1 = "event1"  # 左から1番目
-    bt2 = "event2"  # 左から2番目
-    bt3 = "event3"  # 左から3番目
+    bt1 = "stroke"     # 左1番目
+    bt2 = "try"        # 左2番目
+    bt3 = "pick up"    # 左3番目
+    bt4 = "seeable"    # 右1番目
+    bt5 = "unseeable"  # 右2番目
+    bt6 = "event6"     # 右3番目
 #################################################
 
     data = []       # データ置き場
@@ -90,6 +93,12 @@ class MyApp(App):
         elif bt == 3:
             self.root.hit3.color = [0.1098, 0.5137, 0.7333, 1]  # 青
         elif bt == 4:
+            self.root.hit4.color = [0.1098, 0.5137, 0.7333, 1]  # 青
+        elif bt == 5:
+            self.root.hit5.color = [0.1098, 0.5137, 0.7333, 1]  # 青
+        elif bt == 6:
+            self.root.hit6.color = [0.1098, 0.5137, 0.7333, 1]  # 青
+        elif bt == 0:
             self.root.sys1.color = [0.9294, 0.6784, 0.0431, 1]  # オレンジ（実行中）
         else:
             self.root.sys1.color = [1, 1, 1, 1]  # 白
@@ -103,9 +112,18 @@ class MyApp(App):
         elif bt == 2:
             self.root.hit2.color = [1, 1, 1, 1]  # 白
             press_bt = self.bt2  # 押されたボタンのイベント名
-        else:
+        elif bt == 3:
             self.root.hit3.color = [1, 1, 1, 1]  # 白
             press_bt = self.bt3  # 押されたボタンのイベント名
+        elif bt == 4:
+            self.root.hit4.color = [1, 1, 1, 1]  # 白
+            press_bt = self.bt4  # 押されたボタンのイベント名
+        elif bt == 5:
+            self.root.hit5.color = [1, 1, 1, 1]  # 白
+            press_bt = self.bt5  # 押されたボタンのイベント名
+        elif bt == 6:
+            self.root.hit6.color = [1, 1, 1, 1]  # 白
+            press_bt = self.bt6  # 押されたボタンのイベント名
 
         now = "{0:%y/%m/%d %H:%M:%S}".format(dt.datetime.now())  # ボタンを押した時の時刻を獲得
         self.data.append([press_bt] + [now])  # ラベル名と合わせてリストにぶちこむ

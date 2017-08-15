@@ -21,7 +21,7 @@ class logtime(Widget):
 
 # アプリの挙動
 class MyApp(App):
-    title = 'Log_Time'  # ウィンドウのタイトル
+    title = 'Log_Time v1.2'  # ウィンドウのタイトル
 
 #################################################
 # ボタン名（イベント名）：ここの名前を変えることでevent名が変化
